@@ -25,8 +25,16 @@ ActiveRecord::Schema.define(version: 2022_04_26_133732) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.boolean "is_deleted", default: true, null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "telephone_number", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
