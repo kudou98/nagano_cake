@@ -23,10 +23,10 @@
         </div>
 
         <div class="form-check">
-          <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "有効" %>
-          <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted, "無効" %>
+          <%= f.radio_button :is_enabled, :true %>
+          <%= f.label :is_enabled, "有効" %>
+          <%= f.radio_button :is_enabled, :false %>
+          <%= f.label :is_enabled, "無効" %>
         </div>
 
         <div class="row">
@@ -51,7 +51,7 @@
             <tr>
               <td><%= genre.name %></td>
               <td>
-                <% if genre.is_deleted == true %>
+                <% if genre.is_enabled == true %>
                   有効
                 <% else %>
                   無効
