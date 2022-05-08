@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.address = session[:address]
-    @order.payment = session[:payment]
+    @order.payment = session[:payment_method]
     @order.total_payment = calculate(current_customer)
     @order.status = 0
     @order.save
@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
     end
     current_customer.cart_items.destroy_all
     session.delete(:address)
-    session.delete(:payment)
+    session.delete(:payment_method)
     redirect_to thanks_path
   end
 
