@@ -32,5 +32,5 @@ class Public::SessionsController < Devise::SessionsController
     else
        items_path
     end
-   end
+    end
 end
