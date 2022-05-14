@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @addresses = current_customer.ship_addresses
-    @address = Address.new
+    @ship_addresses = current_customer.ship_addresses
+    @ship_address = ShipAddress.new
     @order = Order.new
   end
 
@@ -30,22 +30,22 @@ class OrdersController < ApplicationController
     end
 
   end
-  
+
   # 購入確認画面
   def confirm
       @orders = current_customer.orders
       @total_payment = calculate(current_customer)
 
       if  session[:address].length <8
-        @address = Address.find(session[:address])
+        @address = ShipAddress.find(session[:address])
       end
   end
 
   # 情報入力画面にて新規配送先の登録
-  def create_address
-    @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
-    @address.save
+  def create_ship_address
+    @ship_address = ShipAddress.new(ship_address_params)
+    @ship_address.customer_id = current_customer.id
+    @ship_address.save
     redirect_to new_order_path
   end
 
@@ -79,8 +79,8 @@ class OrdersController < ApplicationController
   end
 
   private
-   def address_params
-     params.require(:address).permit(:customer_id,:last_name, :first_name, :postal_code, :address)
+   def ship_address_params
+     params.require(:ship_address).permit(:customer_id,:last_name, :first_name, :postal_code, :address)
    end
    def order_params
      params.require(:order).permit(:customer_id, :address, :payment_method, :shipping_cost, :total_payment, :status)

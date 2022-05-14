@@ -44,11 +44,11 @@
      <tbody>
     <% @addresses.each do |address| %>
     <tr class="brown-border">
-     	<td><%= address.postal_code %></td>
-     	<td><%= address.address %></td>
-     	<td><%= address.last_name %><%= address.first_name %></td>
-     	<td><%= link_to "編集する", edit_address_path(address),  class: "btn btn-sm btn-outline-danger" %>
-          <%= link_to "削除する", address_path(address), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+     	<td><%= ship_address.postal_code %></td>
+     	<td><%= ship_address.address %></td>
+     	<td><%= ship_address.last_name %><%= ship_address.first_name %></td>
+     	<td><%= link_to "編集する", edit_ship_address_path(ship_address),  class: "btn btn-sm btn-outline-danger" %>
+          <%= link_to "削除する", ship_address_path(shipaddress), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
         </td>
      </tr>
   <% end %>

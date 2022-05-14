@@ -1,4 +1,4 @@
-class Address < ApplicationRecord
+class ShipAddress < ApplicationRecord
    validates :last_name,  presence: true
    validates :first_name, presence: true
    validates :postal_code,  presence: true, format: {with: /\A\d{7}\z/}
