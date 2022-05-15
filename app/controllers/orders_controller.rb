@@ -65,16 +65,16 @@ class OrdersController < ApplicationController
     current_customer.cart_items.each do |cart|
       @order_detail = OrderDetail.new
       @order_detail.order_id = @order.id
-      @order_detail.item_name = cart.item.name
+      @order_detail.item_id = cart.item.name
       @order_detail.price = cart.item.price
-      @order_detail.amount = cart.quantity
+      @order_detail.amount = cart.amount
       @order_detail.making_status = 0
       @order_detail.save
 
     end
     current_customer.cart_items.destroy_all
     session.delete(:address)
-    session.delete(:payment_method)
+    session.delete(:payment)
     redirect_to thanks_path
   end
 
@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
      params.require(:ship_address).permit(:customer_id,:last_name, :first_name, :postal_code, :address)
    end
    def order_params
-     params.require(:order).permit(:customer_id, :address, :payment_method, :shipping_cost, :total_payment, :status)
+     params.require(:order).permit(:customer_id, :address, :payment, :shipping_cost, :total_payment, :status)
    end
 
    # 商品合計（税込）の計算
