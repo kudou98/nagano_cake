@@ -8,7 +8,7 @@ devise_for :admin, controllers: {
 }
 
 # URL /customers/sign_in ...
-devise_for :customer, controllers: {
+devise_for :customers, controllers: {
   sessions: 'customers/sessions',
   passwords: 'customers/passwords',
   registrations: "customers/registrations"

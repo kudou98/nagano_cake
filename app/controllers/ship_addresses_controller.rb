@@ -1,4 +1,5 @@
 class ShipAddressesController < ApplicationController
+  # 配送先一覧
   def index
     @ship_address_new = ShipAddress.new
     @ship_addresses = current_customer.ship_addresses
