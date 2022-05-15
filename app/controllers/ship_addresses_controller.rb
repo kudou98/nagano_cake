@@ -6,7 +6,7 @@ class ShipAddressesController < ApplicationController
   end
 
   def create
-    @ship_address = ShipAddress.new(address_params)
+    @ship_address = ShipAddress.new(ship_address_params)
     @ship_address.customer_id = current_customer.id
     if @ship_address.save
        redirect_to ship_addresses_path

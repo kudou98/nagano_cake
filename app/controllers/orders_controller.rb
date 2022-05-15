@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.address = session[:address]
-    @order.payment = session[:payment_method]
+    @order.payment = session[:payment]
     @order.total_payment = calculate(current_customer)
     @order.status = 0
     @order.save
