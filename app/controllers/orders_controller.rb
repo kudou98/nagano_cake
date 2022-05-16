@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     if params[:select] == "select_address"
       session[:address] = params[:address]
     elsif params[:select] == "my_address"
-      session[:address] ="〒" +current_customer.postal_code+current_customer.address+current_customer.last_name+current_customer.first_name
+      session[:address] ="〒"+current_customer.postal_code+current_customer.address+current_customer.last_name+current_customer.first_name
     end
     if session[:address].present? && session[:payment].present?
       redirect_to orders_confirm_path

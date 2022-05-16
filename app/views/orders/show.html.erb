@@ -38,7 +38,7 @@
             </tr>
 
             <tr class="brown-border">
-              <td>ステータス</td>
+              <td>注文ステータス</td>
               <td><%= @order.status %></td>
             </tr>
           </tbody>
@@ -98,7 +98,7 @@
         <% @order_details.each do |d| %>
         <tbody>
           <tr class="brown-border">
-            <td><%= d.item_name %></td>
+            <td><%= d.item_id %></td>
             <td><%= (d.price * 1.1).floor %></td>
             <td><%= d.amount %></td>
             <td><%= ((d.price * d.amount) * 1.1).floor %></td>
