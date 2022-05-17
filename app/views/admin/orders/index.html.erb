@@ -23,12 +23,8 @@
               <%= order.customer.first_name %>
             </td>
             <td><%= order.order_details.sum(:amount) %></td>
-            <td><%= order.status %>
-            <%= form_for (order), url:admin_orders_path(@order) do |f| %>
-            <%= f.select :status,Order.statuses.keys.to_a %>
-            <%= f.submit "更新", class: "btn btn-success" %>
-            <% end %>
-            </td>
+            <td><%= order.status %></td>
+            <td><%= link_to "注文詳細", admin_order_path(order), class:"btn btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>

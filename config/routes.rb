@@ -26,8 +26,8 @@ namespace :admin do
   get '/customer_datas/:id/orders' => 'orders#index', as: "customer_data_orders" # 会員詳細 => 注文履歴の表示データを変える用
   get '/yesterday/orders' => 'orders#index', as: "yesterday_orders" # TOP,本日製作分の注文数 => 注文履歴の表示データ用
   get '/today/orders' => 'orders#index', as: "today_orders" # TOP,本日受注した注文数 => 注文履歴の表示データ用
-  patch '/orders/:id/status' => 'orders#status_update', as: "status" # 注文ステータスupdate
-  patch '/orders/:id/making_status' => 'orders#making_status_update', as: "making_status" # 製作ステータスupdate
+  patch '/orders/:id/order_status' => 'orders#order_status_update', as: "order_status" # 注文ステータスupdate
+  patch '/orders/:id/item_status' => 'orders#making_status_update', as: "making_status" # 製作ステータスupdate
 end
 
 # customer 顧客用

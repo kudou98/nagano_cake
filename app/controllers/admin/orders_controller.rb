@@ -19,27 +19,32 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
-    @total_payment = calculate(@order)
+    @items_total_payment = calculate(@order)
   end
 
-  def calculate(items_total_price) # 商品合計を算出するメソッド
-    @total_payment = 0
+  def calculate(items_total_payment) # 商品合計を算出するメソッド
+    @items_total_payment = 0
     @order_details.each {|order_detail|
-    tax_in_price = (order_detail.item_price * 1.1).floor
+    tax_in_price = (order_detail.price * 1.1).floor
     sub_total_price = tax_in_price * order_detail.amount
-    @total_payment += sub_total_price
+    @items_total_payment += sub_total_price
     }
-    return @total_payment
+    return @items_total_payment
   end
 
   def order_status_update
-    order = Order.find(params[:id])
+    @order = Order.find(params[:id]) #注文詳細の特定
+    @order_items = @order.order_items #注文から紐付く商品の取得
     order.update(order_params)
     # OrderModel after_update => 製作ステータスの自動変更
-    redirect_to admin_order_path(order)
+
+     if @order.status == "入金確認" #注文ステータスが入金確認なら下の事をする
+	      @order_items.update_all(making_status: 1) #製作ステータスを「製作待ちに」　更新
+	      end
+    redirect_to admin_order_path(@order)
   end
 
-  def item_status_update
+  def making_status_update
     order_detail = OrderDetail.find(params[:id])
     order_detail.update(order_detail_params)
     # OrderDetailModel after_update => 注文ステータスの自動更新
