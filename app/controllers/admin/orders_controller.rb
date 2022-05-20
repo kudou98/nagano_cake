@@ -39,8 +39,8 @@ class Admin::OrdersController < ApplicationController
     # OrderModel after_update => 製作ステータスの自動変更
 
      if @order.status == "入金確認" #注文ステータスが入金確認なら下の事をする
-	      @order_items.update_all(making_status: 1) #製作ステータスを「製作待ちに」　更新
-	      end
+	      @order_items.update_all(making_status: 1) #製作ステータスを「製作待ちに」更新
+        end
     redirect_to admin_order_path(@order)
   end
 

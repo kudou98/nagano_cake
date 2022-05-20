@@ -47,5 +47,14 @@ end
   resources :items, only: [:index]
   end
   resources :orders, except: [:edit, :update, :destroy]
+  
+  
+  resources :customers do
+    member do
+      get "check" #ユーザーの会員状況を取得
+      patch "withdrow" #ユーザーの会員状況を更新
+    end
+  end
+
 
 end
