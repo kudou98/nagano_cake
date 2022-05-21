@@ -67,3 +67,5 @@ gem "enum_help"
 
 # ページネーション
 gem 'kaminari'
+
+gem 'pry-rails'

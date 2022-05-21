@@ -37,9 +37,12 @@ end
   get '/orders/create_order' => 'orders#create_order' #購入確定のアクション
   post '/orders/create_ship_address' => 'orders#create_ship_address' #情報入力画面での配送先登録用のアクション
   delete '/cart_items' => 'cart_items#destroy_all' #カートアイテムを全て削除
-  resources :customers, only: [:show, :edit, :update]
+
+
   get '/customers/:id/withdrow' => 'customers#withdrow', as: 'withdrow_customer' #退会画面への遷移
-  patch '/customers/:id/withdrow' => 'customers#switch', as: 'withdrow_switch_customer' #会員ステータスの切替
+  patch '/customers/:id/switch' => 'customers#switch', as: 'withdrow_switch_customer' #会員ステータスの切替
+  resources :customers, only: [:show, :edit, :update]
+
   resources :ship_addresses, except: [:new, :show]
   resources :cart_items, except: [:new, :show, :edit]
   resources :items, only: [:index, :show]
@@ -47,14 +50,9 @@ end
   resources :items, only: [:index]
   end
   resources :orders, except: [:edit, :update, :destroy]
-  
-  
-  resources :customers do
-    member do
-      get "check" #ユーザーの会員状況を取得
-      patch "withdrow" #ユーザーの会員状況を更新
-    end
-  end
+
+
+
 
 
 end
