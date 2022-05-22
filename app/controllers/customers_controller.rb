@@ -1,20 +1,20 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
 
 
-
-  def show
-  	@customer = Customer.find(params[:id])
+  def show #マイページへのアクション
+  	@customer = current_customer 
   end
 
-  def edit
-    @customer = Customer.find(params[:id])
+  def edit #登録情報編集へのアクション
+    @customer = current_customer 
   end
 
-  def update
-    @customer = Customer.find(params[:id])
+  def update #登録情報の編集を保存するアクション
+    @customer = current_customer
     if @customer.update(customer_params)
       flash[:success] = "You have edited user data successfully."
-      redirect_to customer_path(@customer)
+      redirect_to customers_show_path
     else
       render 'edit'
     end
@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
 
 
   def withdrow #退会画面を表示するアクション
-    @customer = Customer.find(params[:id])
+
   end
 
   def switch
@@ -36,9 +36,6 @@ class CustomersController < ApplicationController
 
 
 
-  def check
-      @customer = Customer.find(params[:id]) #ユーザーの情報を見つける
-  end
 
 
 

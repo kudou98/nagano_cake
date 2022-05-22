@@ -18,42 +18,42 @@
 	      <tr class="brown-border">
 		    	<td>氏名</td>
 		    	<td>
-		    		<%= @customer.last_name %>
-		    		<%= @customer.first_name %>
+		    		<%= current_customer.last_name %>
+		    		<%= current_customer.first_name %>
 		    	</td>
 	      </tr>
 
 	      <tr class="brown-border">
 		    	<td>フリガナ</td>
 		    	<td>
-		    		<%= @customer.last_name_kana %>
-		    		<%= @customer.first_name_kana %>
+		    		<%= current_customer.last_name_kana %>
+		    		<%= current_customer.first_name_kana %>
 	    		</td>
 	      </tr>
 
 	      <tr class="brown-border">
 		    	<td>郵便番号</td>
-		    	<td><%= @customer.postal_code %></td>
+		    	<td><%= current_customer.postal_code %></td>
 	      </tr>
 
 	      <tr class="brown-border">
 		    	<td>住所</td>
-		    	<td><%= @customer.address %></td>
+		    	<td><%= current_customer.address %></td>
 	      </tr>
 
 	      <tr class="brown-border">
 		    	<td>電話番号</td>
-		    	<td><%= @customer.telephone_number %></td>
+		    	<td><%= current_customer.telephone_number %></td>
 	      </tr>
 
 	      <tr class="brown-border">
 	    		<td>メールアドレス</td>
-	        <td><%= @customer.email %></td>
+	        <td><%= current_customer.email %></td>
 	      </tr>
 	    </table>
 
 	    <div class="row">
-		    <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-outline-danger mx-auto my-1" %>
+		    <%= link_to "編集する", edit_customer_path(current_customer), class: "btn btn-outline-danger mx-auto my-1" %>
 		  </div>
 		  <div class="row">
 				<%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-danger mx-auto my-1" %>
