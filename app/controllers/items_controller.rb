@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-  	  @genres = Genre.where(is_enabled: true)# ジャンルが有効のみ
+  	  @genres = Genre.where(is_deleted: true)# ジャンルが有効のみ
 
       # もしURLに[:genre_id]が含まれていたら
     if params[:genre_id]
