@@ -3,18 +3,18 @@ class CustomersController < ApplicationController
 
 
   def show #マイページへのアクション
-  	@customer = current_customer 
+  	@customer = current_customer
   end
 
   def edit #登録情報編集へのアクション
-    @customer = current_customer 
+    @customer = current_customer
   end
 
   def update #登録情報の編集を保存するアクション
     @customer = current_customer
     if @customer.update(customer_params)
       flash[:success] = "You have edited user data successfully."
-      redirect_to customers_show_path
+      redirect_to customer_path(@customer)
     else
       render 'edit'
     end
